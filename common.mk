@@ -57,7 +57,8 @@ PRODUCT_COPY_FILES += \
 
 ## GPS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps_brcm_conf.xml:system/etc/gps_brcm_conf.xml
+    $(LOCAL_PATH)/configs/gps_brcm_conf.xml:system/etc/gps_brcm_conf.xml \
+    $(LOCAL_PATH)/configs/SuplRootCert:system/etc/SuplRootCert
 
 $(call inherit-product, build/target/product/full.mk)
 

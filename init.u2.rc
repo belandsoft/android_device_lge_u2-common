@@ -71,18 +71,25 @@ on post-fs-data
 # gps permissions
 # GPS GPIO Setting - refer gps_gpio.c(android\kernel\drivers\p760\misc)
     chown system system /sys/devices/platform/gps_gpio/poweron
+    chmod 0660 /sys/devices/platform/gps_gpio/poweron
     chown system system /sys/devices/platform/gps_gpio/reset
+    chmod 0660 /sys/devices/platform/gps_gpio/reset
 # GPS UART Setting
     chown system system /dev/ttyO2
+    chmod 0660 /dev/ttyO2
 # GPS RIL port Setting
     chown system system /dev/pts17
+    chmod 0660 /dev/pts17
+    chmod 777 /system/bin/glgps
 
     mkdir /data/gps
-    chmod 770 /data/gps
+    chmod 777 /data/gps
     chown system system /data/gps
     mkdir /data/gps/log
-    chmod 770 /data/gps/log
+    chmod 777 /data/gps/log
     chown system system /data/gps/log
+    chmod 777 /system/bin/lto
+    chown root root /system/bin/lto
 
     mkdir /data/cache
     chmod 770 /data/cache
@@ -377,9 +384,9 @@ service hostapd /system/bin/hostapd -dddd /data/misc/wifi/hostapd.conf
 
 # GPS
 service glgps /system/bin/glgps -c /system/etc/gps_brcm_conf.xml
-    class main
+    class core
     user system
-    group net_raw sdcard_rw system radio
+    group net_raw sdcard_rw system inet
 
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
