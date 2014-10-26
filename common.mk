@@ -42,7 +42,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -181,6 +180,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     charger \
     charger_res_images
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/fs/system/bin/fstrim:system/bin/fstrim \
+    $(LOCAL_PATH)/fs/system/app/GPSFixer.apk:system/app/GPSFixer.apk \
+    $(LOCAL_PATH)/fs/system/framework/com.android.location.provider.jar:system/framework/com.android.location.provider.jar \
+    $(LOCAL_PATH)/fs/system/etc/permissions/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    $(LOCAL_PATH)/fs/system/etc/permissions/com.android.location.provider.xml:system/etc/permissions/com.android.location.provider.xml
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
