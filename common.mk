@@ -57,7 +57,8 @@ PRODUCT_COPY_FILES += \
 ## GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps_brcm_conf.xml:system/etc/gps_brcm_conf.xml \
-    $(LOCAL_PATH)/configs/SuplRootCert:system/etc/SuplRootCert
+    $(LOCAL_PATH)/configs/SuplRootCert:system/etc/SuplRootCert \
+    $(LOCAL_PATH)/configs/lge.cer:system/etc/cert/lge.cer
 
 $(call inherit-product, build/target/product/full.mk)
 
@@ -183,10 +184,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fs/system/bin/fstrim:system/bin/fstrim \
-    $(LOCAL_PATH)/fs/system/app/GPSFixer.apk:system/app/GPSFixer.apk \
     $(LOCAL_PATH)/fs/system/framework/com.android.location.provider.jar:system/framework/com.android.location.provider.jar \
     $(LOCAL_PATH)/fs/system/etc/permissions/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    $(LOCAL_PATH)/fs/system/etc/permissions/com.android.location.provider.xml:system/etc/permissions/com.android.location.provider.xml
+    $(LOCAL_PATH)/fs/system/etc/permissions/com.android.location.provider.xml:system/etc/permissions/com.android.location.provider.xml \
+    $(LOCAL_PATH)/fs/system/etc/init.d/99lmk:system/etc/init.d/99lmk
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
